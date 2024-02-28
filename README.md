@@ -1,3 +1,41 @@
+## (scroll down for original part of forked repo)
+Save this script as name_of_script.js and add your api key
+```js
+// Example filename: uploader.js
+const imgbbUploader = require("imgbb-uploader");
+
+// Check if the correct number of command-line arguments is provided
+if (process.argv.length !== 3) {
+  console.error("\x1b[31mError: Usage: node uploader.js <image-path>\x1b[0m");
+  process.exit(1); // Exit with an error code
+}
+
+const imagePath = process.argv[2];
+
+imgbbUploader("YOUR-API-KEY-HERE", imagePath)
+  .then((response) => {
+    // Extract and log only the links and the delete link
+    const { url, delete_url } = response;
+    console.log(`\x1b[32mImage URL:\x1b[0m \x1b[36m${url}\x1b[0m`);
+    console.log(`\x1b[32mDelete URL:\x1b[0m \x1b[36m${delete_url}\x1b[0m`);
+  })
+  .catch((error) => console.error(error));
+```
+Then add something like this to your .bashrc
+```bash
+# ImgBB uploader
+alias UpIMG="node ~/path/to/script/uploader.js"
+```
+And now you can run this in your terminal:
+```bash
+UpIMG my_image.png
+```
+or
+```bash
+UpIMG ~/path/to/image/my_image.png
+```
+
+
 # imgbb-uploader
 
 Lightweight Nodejs module to upload pictures to imgBB (or other chevereto-based APIs) and get display URLs in response.  
