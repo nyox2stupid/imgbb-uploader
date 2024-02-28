@@ -24,7 +24,7 @@ imgbbUploader("YOUR-API-KEY-HERE", imagePath)
 Then add something like this to your .bashrc
 ```bash
 # ImgBB uploader
-alias UpIMG="node ~/path/to/script/uploader.js"
+alias UpIMG="node ~/path/to/script/name_of_script.js"
 ```
 And now you can run this in your terminal:
 ```bash
